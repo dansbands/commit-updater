@@ -84,7 +84,12 @@ const updateCounter = async () => {
     // Get the Git user configuration
     const config = await git.listConfig();
     console.log(
-      `Git user configuration set. ${JSON.stringify(config, null, 2)}`
+      `Git user configuration set.`
+      // `Git user configuration set. ${JSON.stringify(
+      //   config,
+      //   null,
+      //   2
+      // )}`
     );
 
     // Stage, commit, and push changes
