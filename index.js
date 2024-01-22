@@ -68,7 +68,8 @@ const updateCounter = async () => {
 
         const config = await git.listConfig();
         console.log(
-          `Git user configuration set. ${JSON.stringify(config, null, 2)}`
+          `Git user configuration set.`
+          // `Git user configuration set. ${JSON.stringify(config, null, 2)}`
         );
       } catch (error) {
         console.error("Error setting Git user configuration:", error);
@@ -100,7 +101,7 @@ const updateCounter = async () => {
 };
 
 // Schedule the cron job (runs every 14 minutes in this example)
-const job = new cron.CronJob("*/30 * * * * *", updateCounter);
+const job = new cron.CronJob("*/5 * * * * *", updateCounter);
 job.start();
 
 const secondaryJob = new cron.CronJob("0 * * * * *", callBackend);
