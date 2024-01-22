@@ -15,14 +15,14 @@ const USER_EMAIL = process.env.USER_EMAIL;
 const USER_TOKEN = process.env.USER_TOKEN;
 const USER_REPO = process.env.USER_REPO;
 
-console.log("USER_NAME", USER_NAME);
-console.log("USER_EMAIL", USER_EMAIL);
-console.log("USER_TOKEN", USER_TOKEN);
-console.log("USER_REPO", USER_REPO);
+// console.log("USER_NAME", USER_NAME);
+// console.log("USER_EMAIL", USER_EMAIL);
+// console.log("USER_TOKEN", USER_TOKEN);
+// console.log("USER_REPO", USER_REPO);
 
-const remote = `https://${USER_NAME}:${USER_TOKEN}@${USER_REPO}`;
-console.log("remote", remote);
-// const remote = "git@github.com:dansbands/commit-updater.git";
+// const remote = `https://${USER_NAME}:${USER_TOKEN}@${USER_REPO}`;
+// console.log("remote", remote);
+const remote = "git@github.com:dansbands/commit-updater.git";
 
 // Ensure the counter file exists
 if (!fs.existsSync(filePath)) {
