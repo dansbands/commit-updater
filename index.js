@@ -37,7 +37,7 @@ const callBackend = async () => {
 };
 
 // Number of days to go back in time for the commit
-let numberOfDays = 10;
+let numberOfDays = 11;
 
 // Function to update the counter and commit changes
 const updateCounter = async () => {
