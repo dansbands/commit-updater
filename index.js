@@ -47,7 +47,7 @@ const updateCounter = async () => {
 
     // Increment the counter
     counter += 1;
-    numberOfDays += .1;
+    numberOfDays += 2;
     // Write the new counter value back to the file
     fs.writeFileSync(filePath, counter.toString(), "utf8");
 
