@@ -10,10 +10,10 @@ const filePath = path.join(__dirname, "counter.txt");
 // Git configuration
 const git = simpleGit();
 
-const USER_NAME = process.env.USER_NAME;
-const USER_EMAIL = process.env.USER_EMAIL;
-const USER_TOKEN = process.env.USER_TOKEN;
-const USER_REPO = process.env.USER_REPO;
+// const USER_NAME = process.env.USER_NAME;
+// const USER_EMAIL = process.env.USER_EMAIL;
+// const USER_TOKEN = process.env.USER_TOKEN;
+// const USER_REPO = process.env.USER_REPO;
 
 // console.log("USER_NAME", USER_NAME);
 // console.log("USER_EMAIL", USER_EMAIL);
@@ -36,6 +36,9 @@ const callBackend = async () => {
   return fetch("https://ai-todo-list.onrender.com/");
 };
 
+// Number of days to go back in time for the commit
+let numberOfDays = 10;
+
 // Function to update the counter and commit changes
 const updateCounter = async () => {
   try {
@@ -44,7 +47,7 @@ const updateCounter = async () => {
 
     // Increment the counter
     counter += 1;
-
+    numberOfDays += 1;
     // Write the new counter value back to the file
     fs.writeFileSync(filePath, counter.toString(), "utf8");
 
@@ -59,22 +62,22 @@ const updateCounter = async () => {
     const randomMessage =
       commitMessages[Math.floor(Math.random() * commitMessages.length)];
 
-    const options = { "--date": "365 days ago" };
+    const options = { "--date": `${numberOfDays} days ago` };
 
-    const setupGitConfig = async () => {
-      try {
-        await git.addConfig("user.name", process.env.NAME);
-        await git.addConfig("user.email", process.env.EMAIL);
+    // const setupGitConfig = async () => {
+    //   try {
+    //     await git.addConfig("user.name", process.env.NAME);
+    //     await git.addConfig("user.email", process.env.EMAIL);
 
-        const config = await git.listConfig();
-        console.log(
-          `Git user configuration set.`
-          // `Git user configuration set. ${JSON.stringify(config, null, 2)}`
-        );
-      } catch (error) {
-        console.error("Error setting Git user configuration:", error);
-      }
-    };
+    //     const config = await git.listConfig();
+    //     console.log(
+    //       `Git user configuration set.`
+    //       // `Git user configuration set. ${JSON.stringify(config, null, 2)}`
+    //     );
+    //   } catch (error) {
+    //     console.error("Error setting Git user configuration:", error);
+    //   }
+    // };
 
     // Call this function before making Git operations
     // setupGitConfig().then(() => {
@@ -96,7 +99,7 @@ const updateCounter = async () => {
     await git.add("./*");
     await git.commit(randomMessage, options);
     // await git.addRemote("origin", remote);
-    console.log("remote", remote);
+    // console.log("remote", remote);
     await git.push(remote, "main");
 
     console.log(`Counter updated and committed: ${counter}`);
@@ -106,7 +109,7 @@ const updateCounter = async () => {
 };
 
 // Schedule the cron job (runs every 14 minutes in this example)
-const job = new cron.CronJob("*/5 * * * * *", updateCounter);
+const job = new cron.CronJob("*/1 * * * * *", updateCounter);
 job.start();
 
 const secondaryJob = new cron.CronJob("0 * * * * *", callBackend);
