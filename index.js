@@ -62,4 +62,5 @@ job.start();
 const secondaryJob = new cron.CronJob("0 * * * * *", callBackend);
 secondaryJob.start;
 
-console.log("Cron job started, updating counter every 20 min.");
+console.log("Cron job started, updating counter every 14 min.");
+console.log("Secondary job started, pinging ai-todo-list every 1 min.");
