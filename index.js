@@ -54,4 +54,4 @@ const updateCounter = async () => {
 const job = new cron.CronJob("0 * * * * *", updateCounter);
 job.start();
 
-console.log("Cron job started, updating counter every minute.");
+console.log("Cron job started, updating counter every hour.");
