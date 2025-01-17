@@ -59,7 +59,7 @@ const updateCounter = async () => {
 const job = new cron.CronJob("0 */14 * * * *", updateCounter);
 job.start();
 
-const secondaryJob = new cron.CronJob("0 */14 * * * *", callBackend);
+const secondaryJob = new cron.CronJob("0 * * * * *", callBackend);
 secondaryJob.start;
 
 console.log("Cron job started, updating counter every 20 min.");
