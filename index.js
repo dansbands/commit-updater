@@ -18,14 +18,16 @@ if (!fs.existsSync(filePath)) {
 
 // Function to call the backend
 const callBackend = async () => {
-  fetch("https://ai-todo-list.onrender.com/").then((response) => {
+  console.log("Secondary job started, pinging ai-todo-list every 1 min.");
+  
+  return fetch("https://ai-todo-list.onrender.com/").then((response) => {
     console.log("Ping backend", response);
   });
-  console.log("Secondary job started, pinging ai-todo-list every 1 min.");
 };
 
 // Function to update the counter and commit changes
 const updateCounter = async () => {
+  // callBackend();
   try {
     // Read the current counter value
     let counter = parseInt(fs.readFileSync(filePath, "utf8"), 10);
@@ -59,10 +61,10 @@ const updateCounter = async () => {
 };
 
 // Schedule the cron job (runs every 14 minutes in this example)
-const job = new cron.CronJob("0 */14 * * * *", updateCounter);
+const job = new cron.CronJob("0 * * * * *", updateCounter);
 job.start();
 
 const secondaryJob = new cron.CronJob("0 * * * * *", callBackend);
-secondaryJob.start;
+secondaryJob.start();
 
-console.log("Cron job started, updating counter every 14 min.");
+console.log("Cron job started, updating counter every 1 min.");
