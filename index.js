@@ -16,6 +16,11 @@ if (!fs.existsSync(filePath)) {
   fs.writeFileSync(filePath, "0", "utf8");
 }
 
+// Function to call the backend
+const callBackend = async () => {
+  fetch("https://ai-todo-list.onrender.com/").then((response) => {console.log(response)});
+}
+
 // Function to update the counter and commit changes
 const updateCounter = async () => {
   try {
@@ -50,10 +55,11 @@ const updateCounter = async () => {
   }
 };
 
-// Schedule the cron job (runs every hour in this example)
-const job = new cron.CronJob("0 */20 * * * *", updateCounter);
+// Schedule the cron job (runs every 14 minutes in this example)
+const job = new cron.CronJob("0 */14 * * * *", updateCounter);
 job.start();
 
 const secondaryJob = new cron.CronJob("0 */14 * * * *", callBackend);
+secondaryJob.start;
 
 console.log("Cron job started, updating counter every 20 min.");
