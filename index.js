@@ -18,8 +18,11 @@ if (!fs.existsSync(filePath)) {
 
 // Function to call the backend
 const callBackend = async () => {
-  fetch("https://ai-todo-list.onrender.com/").then((response) => {console.log('Ping backend', response)});
-}
+  fetch("https://ai-todo-list.onrender.com/").then((response) => {
+    console.log("Ping backend", response);
+  });
+  console.log("Secondary job started, pinging ai-todo-list every 1 min.");
+};
 
 // Function to update the counter and commit changes
 const updateCounter = async () => {
@@ -63,4 +66,3 @@ const secondaryJob = new cron.CronJob("0 * * * * *", callBackend);
 secondaryJob.start;
 
 console.log("Cron job started, updating counter every 14 min.");
-console.log("Secondary job started, pinging ai-todo-list every 1 min.");
