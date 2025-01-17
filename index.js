@@ -20,9 +20,7 @@ if (!fs.existsSync(filePath)) {
 const callBackend = async () => {
   console.log("Secondary job started, pinging ai-todo-list every 1 min.");
   
-  return fetch("https://ai-todo-list.onrender.com/").then((response) => {
-    console.log("Ping backend", response);
-  });
+  return fetch("https://ai-todo-list.onrender.com/")
 };
 
 // Function to update the counter and commit changes
