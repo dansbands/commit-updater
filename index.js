@@ -18,7 +18,7 @@ if (!fs.existsSync(filePath)) {
 
 // Function to call the backend
 const callBackend = async () => {
-  fetch("https://ai-todo-list.onrender.com/").then((response) => {console.log(response)});
+  fetch("https://ai-todo-list.onrender.com/").then((response) => {console.log('Ping backend', response)});
 }
 
 // Function to update the counter and commit changes
