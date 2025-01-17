@@ -65,4 +65,4 @@ job.start();
 const secondaryJob = new cron.CronJob("0 * * * * *", callBackend);
 secondaryJob.start();
 
-console.log("Cron job started, updating counter every 1 min.");
+console.log("Cron job started, updating counter every 1 min. Yay!");
