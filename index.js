@@ -50,8 +50,8 @@ const updateCounter = async () => {
   }
 };
 
-// Schedule the cron job (runs every minute in this example)
-const job = new cron.CronJob("0 * * * * *", updateCounter);
+// Schedule the cron job (runs every hour in this example)
+const job = new cron.CronJob("0 0 * * * *", updateCounter);
 job.start();
 
 console.log("Cron job started, updating counter every hour.");
