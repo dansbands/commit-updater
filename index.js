@@ -9,7 +9,7 @@ const filePath = path.join(__dirname, "counter.txt");
 
 // Git configuration
 const git = simpleGit();
-const remote = "git@github.com:dansbands/commit-updater.git"; 
+const remote = "git@github.com:dansbands/commit-updater.git";
 
 // Ensure the counter file exists
 if (!fs.existsSync(filePath)) {
@@ -51,8 +51,31 @@ const updateCounter = async () => {
       try {
         await git.addConfig("user.name", process.env.NAME);
         await git.addConfig("user.email", process.env.EMAIL);
+
+        //deeper
+        await git.addConfig(
+          ["Users/Dan/.gitconfig"]["user.name"],
+          process.env.NAME
+        );
+        await git.addConfig(
+          ["Users/Dan/.gitconfig"]["user.email"],
+          process.env.EMAIL
+        );
+
+        //even deeper
+        await git.addConfig(
+          [".git/config"]["user.name"],
+          process.env.NAME
+        );
+        await git.addConfig(
+          [".git/config"]["user.email"],
+          process.env.EMAIL
+        );
+
         const config = await git.listConfig();
-        console.log(`Git user configuration set. ${JSON.stringify(config, null, 2)}`);
+        console.log(
+          `Git user configuration set. ${JSON.stringify(config, null, 2)}`
+        );
       } catch (error) {
         console.error("Error setting Git user configuration:", error);
       }
