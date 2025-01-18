@@ -10,6 +10,9 @@ const filePath = path.join(__dirname, "counter.txt");
 // Git configuration
 const git = simpleGit();
 const remoteRepo = "git@github.com:dansbands/commit-updater.git"; // Replace with your repository URL
+const username = "dansbands";
+const email = "danodeawebdev@gmail.com";
+const remote = `https://${username}:${email}@${remoteRepo}`;
 
 // Ensure the counter file exists
 if (!fs.existsSync(filePath)) {
@@ -19,8 +22,8 @@ if (!fs.existsSync(filePath)) {
 // Function to call the backend
 const callBackend = async () => {
   console.log("Secondary job started, pinging ai-todo-list every 1 min.");
-  
-  return fetch("https://ai-todo-list.onrender.com/")
+
+  return fetch("https://ai-todo-list.onrender.com/");
 };
 
 // Function to update the counter and commit changes
@@ -47,6 +50,20 @@ const updateCounter = async () => {
     const randomMessage =
       commitMessages[Math.floor(Math.random() * commitMessages.length)];
 
+    const setupGitConfig = async () => {
+      try {
+        await git.addConfig("user.name", "dansbands");
+        await git.addConfig("user.email", "danodeawebdev@gmail.com");
+        console.log("Git user configuration set.");
+      } catch (error) {
+        console.error("Error setting Git user configuration:", error);
+      }
+    };
+
+    // Call this function before making Git operations
+    setupGitConfig().then(() => {
+      console.log("Git configuration completed.");
+    });
     // Stage, commit, and push changes
     await git.add("./*");
     await git.commit(randomMessage);
