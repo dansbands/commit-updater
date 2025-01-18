@@ -1,0 +1,7 @@
+services:
+  - type: worker # Specifies this as a background worker service
+    name: commit-updater-worker
+    env: node
+    buildCommand: npm install # or npm install
+    startCommand: node index.js
+    plan: free # You can change this to a paid plan if needed
