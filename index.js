@@ -48,6 +48,7 @@ const updateCounter = async () => {
       commitMessages[Math.floor(Math.random() * commitMessages.length)];
 
     const setupGitConfig = async () => {
+      await git.listConfig();
       try {
         await git.addConfig("user.name", "dansbands");
         await git.addConfig("user.email", "danodeawebdev@gmail.com");
