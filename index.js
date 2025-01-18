@@ -48,11 +48,11 @@ const updateCounter = async () => {
       commitMessages[Math.floor(Math.random() * commitMessages.length)];
 
     const setupGitConfig = async () => {
-      await git.listConfig();
       try {
         await git.addConfig("user.name", "dansbands");
         await git.addConfig("user.email", "danodeawebdev@gmail.com");
-        console.log("Git user configuration set.");
+        const config = await git.listConfig();
+        console.log(`Git user configuration set. ${config}`);
       } catch (error) {
         console.error("Error setting Git user configuration:", error);
       }
