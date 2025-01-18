@@ -8,7 +8,8 @@ const simpleGit = require("simple-git");
 const filePath = path.join(__dirname, "counter.txt");
 
 // Git configuration
-const git = simpleGit({ config: {} });
+// const git = simpleGit({ config: {} });
+const git = simpleGit();
 const remote = "git@github.com:dansbands/commit-updater.git";
 
 // Ensure the counter file exists
@@ -25,7 +26,6 @@ const callBackend = async () => {
 
 // Function to update the counter and commit changes
 const updateCounter = async () => {
-  // callBackend();
   try {
     // Read the current counter value
     let counter = parseInt(fs.readFileSync(filePath, "utf8"), 10);
