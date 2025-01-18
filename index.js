@@ -52,7 +52,7 @@ const updateCounter = async () => {
         await git.addConfig("user.name", "dansbands");
         await git.addConfig("user.email", "danodeawebdev@gmail.com");
         const config = await git.listConfig();
-        console.log(`Git user configuration set. ${config}`);
+        console.log(`Git user configuration set. ${JSON.stringify(config)}`);
       } catch (error) {
         console.error("Error setting Git user configuration:", error);
       }
