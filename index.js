@@ -9,10 +9,7 @@ const filePath = path.join(__dirname, "counter.txt");
 
 // Git configuration
 const git = simpleGit();
-const remoteRepo = "git@github.com:dansbands/commit-updater.git"; // Replace with your repository URL
-const username = "dansbands";
-const email = "danodeawebdev@gmail.com";
-const remote = `https://${username}:${email}@${remoteRepo}`;
+const remote = "git@github.com:dansbands/commit-updater.git"; 
 
 // Ensure the counter file exists
 if (!fs.existsSync(filePath)) {
@@ -67,7 +64,8 @@ const updateCounter = async () => {
     // Stage, commit, and push changes
     await git.add("./*");
     await git.commit(randomMessage);
-    await git.push();
+    await git.addRemote("origin", remote);
+    await git.push("origin", "main");
 
     console.log(`Counter updated and committed: ${counter}`);
   } catch (error) {
