@@ -67,7 +67,7 @@ const updateCounter = async () => {
     // Stage, commit, and push changes
     await git.add("./*");
     await git.commit(randomMessage);
-    await git.push("origin", "main");
+    await git.push();
 
     console.log(`Counter updated and committed: ${counter}`);
   } catch (error) {
