@@ -67,9 +67,9 @@ const updateCounter = async () => {
     };
 
     // Call this function before making Git operations
-    setupGitConfig().then(() => {
-      console.log("Git configuration completed.");
-    });
+    // setupGitConfig().then(() => {
+    //   console.log("Git configuration completed.");
+    // });
     // Stage, commit, and push changes
     await git.add("./*");
     await git.commit(randomMessage);
