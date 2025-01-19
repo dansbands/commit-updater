@@ -8,7 +8,6 @@ const simpleGit = require("simple-git");
 const filePath = path.join(__dirname, "counter.txt");
 
 // Git configuration
-// const git = simpleGit({ config: {} });
 const git = simpleGit();
 const remote = "git@github.com:dansbands/commit-updater.git";
 
@@ -49,8 +48,8 @@ const updateCounter = async () => {
 
     const setupGitConfig = async () => {
       try {
-        // await git.addConfig("user.name", process.env.NAME);
-        // await git.addConfig("user.email", process.env.EMAIL);
+        await git.addConfig("user.name", process.env.NAME);
+        await git.addConfig("user.email", process.env.EMAIL);
 
         const config = await git.listConfig();
         console.log(
