@@ -11,7 +11,7 @@ const filePath = path.join(__dirname, "counter.txt");
 const git = simpleGit();
 
 const USER = process.env.USER;
-const PASS = process.env.PASSWORD
+const PASS = process.env.PASSWORD;
 const REPO = "github.com/dansbands/commit-updater";
 
 const remote = `https://${USER}:${PASS}@${REPO}`;
