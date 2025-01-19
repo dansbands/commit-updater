@@ -9,7 +9,13 @@ const filePath = path.join(__dirname, "counter.txt");
 
 // Git configuration
 const git = simpleGit();
-const remote = "git@github.com:dansbands/commit-updater.git";
+
+const USER = process.env.USER;
+const PASS = process.env.PASSWORD
+const REPO = "github.com/dansbands/commit-updater";
+
+const remote = `https://${USER}:${PASS}@${REPO}`;
+// const remote = "git@github.com:dansbands/commit-updater.git";
 
 // Ensure the counter file exists
 if (!fs.existsSync(filePath)) {
