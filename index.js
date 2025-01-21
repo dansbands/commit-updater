@@ -9,7 +9,7 @@ const filePath = path.join(__dirname, "counter.txt");
 
 // Git configuration
 const git = simpleGit();
-console.log
+
 const USER_NAME = process.env.USER_NAME;
 const USER_EMAIL = process.env.USER_EMAIL;
 const USER_TOKEN = process.env.USER_TOKEN;
