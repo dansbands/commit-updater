@@ -9,18 +9,18 @@ const filePath = path.join(__dirname, "counter.txt");
 
 // Git configuration
 const git = simpleGit();
+console.log
+const USER_NAME = process.env.USER_NAME;
+const USER_EMAIL = process.env.USER_EMAIL;
+const USER_TOKEN = process.env.USER_TOKEN;
+const USER_REPO = process.env.USER_REPO;
 
-const NAME = process.env.NAME;
-const EMAIL = process.env.EMAIL;
-const TOKEN = process.env.TOKEN;
-const REPO = process.env.REPO;
+console.log('USER_NAME', USER_NAME)
+console.log('USER_EMAIL', USER_EMAIL)
+console.log('USER_TOKEN', USER_TOKEN)
+console.log('USER_REPO', USER_REPO)
 
-console.log('NAME', NAME)
-console.log('EMAIL', EMAIL)
-console.log('TOKEN', TOKEN)
-console.log('REPO', REPO)
-
-const remote = `https://${NAME}:${TOKEN}@${REPO}`;
+const remote = `https://${USER_NAME}:${USER_TOKEN}@${USER_REPO}`;
 console.log('remote', remote)
 // const remote = "git@github.com:dansbands/commit-updater.git";
 
