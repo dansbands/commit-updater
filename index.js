@@ -12,8 +12,8 @@ const git = simpleGit();
 
 const USER = process.env.USER;
 console.log('USER', USER)
-const PASS = process.env.PASS;
-console.log('PASS', PASS)
+const WORD = process.env.WORD;
+console.log('WORD', WORD)
 const REPO = "github.com/dansbands/commit-updater";
 console.log('REPO', REPO)
 
