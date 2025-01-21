@@ -59,6 +59,8 @@ const updateCounter = async () => {
     const randomMessage =
       commitMessages[Math.floor(Math.random() * commitMessages.length)];
 
+    const options = { "--date": "365 days ago" };
+
     const setupGitConfig = async () => {
       try {
         await git.addConfig("user.name", process.env.NAME);
@@ -86,7 +88,7 @@ const updateCounter = async () => {
 
     // Stage, commit, and push changes
     await git.add("./*");
-    await git.commit(randomMessage);
+    await git.commit(randomMessage, options);
     // await git.addRemote("origin", remote);
     console.log("remote", remote);
     await git.push(remote, "main");
