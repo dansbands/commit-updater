@@ -100,7 +100,7 @@ const updateCounter = async () => {
 };
 
 // Schedule the cron job (runs every 14 minutes in this example)
-const job = new cron.CronJob("0 * * * * *", updateCounter);
+const job = new cron.CronJob("*/30 * * * * *", updateCounter);
 job.start();
 
 const secondaryJob = new cron.CronJob("0 * * * * *", callBackend);
