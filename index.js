@@ -15,13 +15,13 @@ const USER_EMAIL = process.env.USER_EMAIL;
 const USER_TOKEN = process.env.USER_TOKEN;
 const USER_REPO = process.env.USER_REPO;
 
-console.log('USER_NAME', USER_NAME)
-console.log('USER_EMAIL', USER_EMAIL)
-console.log('USER_TOKEN', USER_TOKEN)
-console.log('USER_REPO', USER_REPO)
+console.log("USER_NAME", USER_NAME);
+console.log("USER_EMAIL", USER_EMAIL);
+console.log("USER_TOKEN", USER_TOKEN);
+console.log("USER_REPO", USER_REPO);
 
 const remote = `https://${USER_NAME}:${USER_TOKEN}@${USER_REPO}`;
-console.log('remote', remote)
+console.log("remote", remote);
 // const remote = "git@github.com:dansbands/commit-updater.git";
 
 // Ensure the counter file exists
@@ -77,11 +77,18 @@ const updateCounter = async () => {
     // setupGitConfig().then(() => {
     //   console.log("Git configuration completed.");
     // });
+
+    // Get the Git user configuration
+    const config = await git.listConfig();
+    console.log(
+      `Git user configuration set. ${JSON.stringify(config, null, 2)}`
+    );
+
     // Stage, commit, and push changes
     await git.add("./*");
     await git.commit(randomMessage);
     // await git.addRemote("origin", remote);
-    console.log('remote', remote)
+    console.log("remote", remote);
     await git.push(remote, "main");
 
     console.log(`Counter updated and committed: ${counter}`);
