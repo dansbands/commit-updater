@@ -10,15 +10,18 @@ const filePath = path.join(__dirname, "counter.txt");
 // Git configuration
 const git = simpleGit();
 
-const USER = process.env.USER;
-const WORD = process.env.WORD;
-const REPO = "github.com/dansbands/commit-updater";
+const NAME = process.env.NAME;
+const EMAIL = process.env.EMAIL;
+const TOKEN = process.env.TOKEN;
+const REPO = process.env.REPO;
 
-console.log('process.env', process.env)
-console.log('WORD', WORD)
+console.log('NAME', NAME)
+console.log('EMAIL', EMAIL)
+console.log('TOKEN', TOKEN)
 console.log('REPO', REPO)
 
-const remote = `https://${USER}:${WORD}@${REPO}`;
+const remote = `https://${NAME}:${TOKEN}@${REPO}`;
+console.log('remote', remote)
 // const remote = "git@github.com:dansbands/commit-updater.git";
 
 // Ensure the counter file exists
